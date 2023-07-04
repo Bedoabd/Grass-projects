@@ -1,0 +1,378 @@
+/*
+ *
+ * CSS written based on SMACSS architecture.
+ * To learn more, visit: http://smacss.com/
+ * 
+ * For simplicity, no reset or normalize is added. 
+ * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
+ *
+*/
+
+
+/* ---- Base Rules ---- */
+
+:root {
+    --main-color: #272643;
+    --secondary-color: #88dbdb;
+    --primary-color:#2c698ddb;
+    --white-color:#ddd;
+}
+body {
+    background: var(--secondary-color);
+    background: linear-gradient(0deg,var(--primary-color)  0%, var(--secondary-color) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: var(--white-color);
+}
+.scroll {
+    position: fixed;
+    color: var(--white-color);
+    bottom: 15%;
+    right:-30%;
+    transform: translateY(50%);
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Fira Sans', sans-serif;
+    background-color: var(--main-color);
+    padding: 20px;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.scroll.active{
+    right: 30px;
+}
+.scroll:hover {
+    color:  var(--main-color);
+    background-color: var(--white-color);
+}
+
+/* Typeography General*/
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 5em;
+}
+header h1 {
+    margin: 5em 2em 1em;
+    color: var(--main-color);
+    line-height: 90px;
+}
+header h1 div{
+    color: var(--primary-color);
+    font-size: 0.5em;
+    margin-top: -25px;
+
+}
+
+/* @media only screen and (min-width: 35em){
+    h1 {
+        font-size: 7em;
+    }
+    header h1 {
+        margin: 2em 4rem 1em;
+    }
+} */
+
+h2 {
+    border-bottom: 1px solid var(--white-color);
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: var(--white-color);
+}
+
+p {
+    line-height: 1.6em;
+    color: var(--white-color);
+}
+
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 80vh;
+}
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.nav-icon {
+    top: 40px;
+    left: 90px;
+    z-index: 15;
+    box-sizing: border-box;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 10%;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 10px;
+    transition: 0.8s;
+    display: none;
+}
+
+.nav-icon .line {
+    height: 4px;
+    width: 31px;
+    background-color: var(--white-color);
+    display: block;
+    margin: 5px;
+    border-radius: 2px;
+    transition: 0.4s;
+}
+.nav-icon.x-mark {
+    background-color: var(--white-color);
+
+}
+.nav-icon.x-mark .line{
+    background-color: var(--main-color);
+}
+.nav-icon.x-mark .line:first-child{
+    transform: translateY(9px) rotate(45deg);
+}
+.nav-icon.x-mark .line:nth-child(2){
+    transform: rotate(90deg);
+}
+.nav-icon.x-mark .line:last-child{
+    transform: translateY(-9px) rotate(-45deg);
+
+}
+.navbar__menu ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.navbar__menu li {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
+    margin: 1px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--white-color);
+    background-color: var(--main-color);
+    transition: 0.8s;
+}
+@media (max-width:350px) {
+    .navbar__menu .menu__link{
+        font-size: 13px;
+    }
+}
+.navbar__menu .menu__link:hover {
+    background: var(--white-color);
+    color: var(--main-color);
+    transition: ease 0.3s all;
+}
+.navbar__menu .menu__link.selected {
+    background: var(--white-color);
+    color: var(--main-color);
+    transition: ease 0.3s all;
+}
+
+@media (max-width: 768px){
+    .nav-icon {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .navbar__menu ul {
+        display: none;
+
+    }
+    .navbar__menu ul.show-menu{
+        display: block;
+    }
+    /* .navbar__menu .menu__link {
+    } */
+    .navbar__menu li {
+        margin-right: 5%;
+        display: block;
+        background: var(--white-color);
+        border-radius: 5px;
+    }
+    .navbar__menu .menu__link.selected {
+        background: var(--white-color);
+        color:var(--main-color);
+        transition: ease 0.3s all;
+    }
+    .navbar__menu .menu__link:hover {
+        background: var(--white-color);
+        color: var(--main-color);
+        transition: ease 0.3s all;
+    }
+}
+/* Header Styles */
+.page__header {
+    background: var(--main-color);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    padding: 10px;
+}
+
+/* Footer Styles */
+.page__footer {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.page__footer .socials {
+    margin-left: 200px;
+}
+.page__footer .socials a {
+    color: var(--white-color);
+    margin-right: 10px;
+    font-size: 20px;
+}
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    padding: 1em;
+    text-align: left;
+}
+.container {
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 30px;
+}
+.container .gallery img {
+    width: 100%;
+
+}
+#other-projects h2{
+    margin-top: 100px;
+}
+
+@media only screen and (min-width: 35em){
+    .landing__container {
+        /* max-width: 50em; */
+        padding: 4em;
+    }
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right; 
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: linear-gradient(0deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: var(--white-color);
+    background: linear-gradient(0deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -5em;
+    z-index: -5;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.your-active-class {
+    background: var(--main-color);
+    background: linear-gradient(0deg, rgb(101, 101, 101, 0.1) 0%, rgb(40, 39, 69, 0.5) 100%);
+}
+
+section.your-active-class .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.your-active-class .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
